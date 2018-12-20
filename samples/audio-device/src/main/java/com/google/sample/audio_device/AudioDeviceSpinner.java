@@ -22,6 +22,7 @@ import android.media.AudioDeviceCallback;
 import android.media.AudioDeviceInfo;
 import android.media.AudioManager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.widget.Spinner;
 
 import java.util.List;
@@ -100,6 +101,9 @@ public class AudioDeviceSpinner extends Spinner {
                 List<AudioDeviceListEntry> deviceList =
                         AudioDeviceListEntry.createListFrom(addedDevices, mDirectionType);
                 if (deviceList.size() > 0){
+                    for(AudioDeviceListEntry info : deviceList){
+                        Log.d("MyLogs", "onAudioDevicesAdded: device id" + info.getId() + " name: "  +info.getName());
+                    }
                     mDeviceAdapter.addAll(deviceList);
                 }
             }
